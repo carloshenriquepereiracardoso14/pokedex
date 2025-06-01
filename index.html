@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+    <title>Pokedex</title>
+</head>
+
+<body>
+    <header>
+        <img src="img/logo.png" alt="">
+    </header>
+
+    <main class="container">
+        <section class="banner">
+            <img src="img/pokebola.png" alt="" class="pokebola">
+
+            <div class="cont-pokedex">
+                <div id="img"></div>
+                <img src="img/pokedex.png" alt="" class="pokedex">
+
+                <div class="cont-pesquisa">
+                    <input type="text" placeholder="pesquise seu pokemon" class="input" id="pokemon-nome">
+
+                    <button class="btn" onclick="buscar()">
+                        <span class="material-symbols-outlined">
+                            search
+                        </span>
+
+                    </button>
+                </div>
+            </div>
+
+            <div class="infos-pokemon">
+                <h1>Infos Pokemon</h1>
+
+                <div class="dados-pokemon"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/js.js" defer></script>
+</body>
+
+</html>
