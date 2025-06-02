@@ -7,7 +7,7 @@ async function buscarPokemon(nome) {
     const pokebola = document.querySelector('.pokebola');
     pokebola.classList.add('active');
 
-    const erroEncontrar = document.querySelector('.pokemon-nao-achado');
+    const erroEncontrar = document.querySelector('.cont-pokemon-nao-achado');
 
     await delay(2000);
 
@@ -30,6 +30,8 @@ async function buscarPokemon(nome) {
     } 
     
     catch (erro) {
+      document.getElementById('img').innerHTML = '';
+      document.querySelector('.dados-pokemon').innerHTML = '';
       erroEncontrar.classList.add('ativo');
     } 
 
@@ -48,7 +50,7 @@ async function buscarPokemon(nome) {
   const btnCloseError = document.querySelector('.btn-close-erro');
 
   btnCloseError.addEventListener('click', () => {  
-    const erroEncontrar = document.querySelector('.pokemon-nao-achado');
+    const erroEncontrar = document.querySelector('.cont-pokemon-nao-achado');
 
     erroEncontrar.classList.remove('ativo');
   })
