@@ -55,6 +55,7 @@ header img {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
 }
 
 .banner {
@@ -74,7 +75,7 @@ header img {
 }
 
 .cont-pokedex {
-    width: 300px;
+    width: 350px;
     position: relative;
 }
 
@@ -127,7 +128,6 @@ header img {
     border-radius: 5px;
     background: #333;
     color: #999;
-    box-shadow: 5px 5px 0px #555;
     font-size: 14px;
 }
 
@@ -137,35 +137,47 @@ header img {
 
 #img {
     position: absolute;
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     display: flex;
-    top: 140px;
+    top: 160px;
     left: 45%;
     transform: translateX(-45%);
 }
 
 .infos-pokemon {
-    width: 300px;
-    background: rgba(255, 255, 255, 0.4);
+    width: 450px;
+    height: 350px;
+    background: rgb(216, 40, 40);
     backdrop-filter: blur(5px);
     display: flex;
-    height: 300px;
     flex-direction: column;
     gap: 20px;
     padding: 25px 40px;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.4);
+    padding: 50px;
+    border: 2px solid #333;
 }
 
-.infos-pokemon h1, p {
-    color: #444;
+.infos-pokemon h1 {
+    color: #f4f4f4;
+}
+
+.infos-pokemon p {
+    color: #333;
 }
 
 .dados-pokemon {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
+    height: 100%;
+    background: #f4f4f4;
+    border-radius: 8px 8px 8px 35px;
+    padding: 12px;
+    border: 2px solid #333;
 }
 
 .dados-pokemon p {
@@ -185,6 +197,63 @@ header img {
 
 .active {
     display: flex;
+}
+
+.pokemon-nao-achado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    background: #f4f4f4;
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    border: 3px solid #333;
+    transition: transform 0.4s ease-in-out;
+    transform: translateX(100vw);
+    gap: 30px;
+}
+
+.pokemon-nao-achado.ativo {
+    transform: translateX(0);
+}
+
+.pokemon-nao-achado img {
+    width: 180px;
+}
+
+.pokemon-nao-achado p {
+    font-size: 18px;
+}
+
+.btn-close-erro {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url(../img/pokebola.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #333;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    font-size: 28px;
+    font-weight: 600;
+    transition: all .3s ease-in-out;
+}
+
+.btn-close-erro:hover {
+    transform: rotate(360deg);
 }
 
 @keyframes andar {
@@ -228,6 +297,21 @@ header img {
 
     100% {
         box-shadow: 50px 50px 35px rgb(255, 0, 0);
+    }
+}
+
+@media (max-width:768px) {
+    .infos-pokemon {
+        width: 100%;
+        padding: 25px;
+    }
+
+    .dados-pokemon {
+        padding: 10px;
+    }
+
+    .pokemon-nao-achado {
+        width: 90%;
     }
 }
 
