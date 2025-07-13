@@ -287,6 +287,8 @@ header img {
     transform: rotate(360deg);
 }
 
+/* animações */
+
 @keyframes andar {
     0% {
         right: -50px;
@@ -331,6 +333,34 @@ header img {
     }
 }
 
+@keyframes girarResp {
+    0% {
+        transform: rotate(0deg);
+    } 
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes andarResp {
+    0% {
+        right: -50px;
+    }
+
+    25% {
+        right: 65%;
+    }
+
+    50% {
+        right: 35%;
+    }
+
+    100% {
+        right: 55%;
+    }
+}
+
 @media (max-width:768px) {
     .infos-pokemon {
         width: 100%;
@@ -352,5 +382,15 @@ header img {
     .banner {
         flex-direction: column;
         height: 100%;
+        padding: 30px 10px;
+    }
+
+    .cont-pokedex {
+        width: 100%;
+    }
+
+    .pokebola {
+        top: 25%;
+        animation: girarResp 1s infinite, andarResp 4s linear;
     }
 }
