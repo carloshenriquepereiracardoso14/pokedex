@@ -6,8 +6,7 @@ const FILES_TO_CACHE = [
   "./script.js",
   "./manifest.json",
   "./img/icon-192.png",
-  "./img/icon-512.png",
-  // Adicione outras imagens necessárias aqui
+  "./img/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -16,6 +15,7 @@ self.addEventListener("install", (event) => {
       return cache.addAll(FILES_TO_CACHE);
     })
   );
+  self.skipWaiting(); // ativa imediatamente após instalar
 });
 
 self.addEventListener("activate", (event) => {
@@ -30,12 +30,24 @@ self.addEventListener("activate", (event) => {
       )
     )
   );
+  self.clients.claim(); // assume controle das tabs abertas imediatamente
 });
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      if (response) {
+        // Atualiza o cache em segundo plano
+        fetch(event.request).then((networkResponse) => {
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, networkResponse.clone());
+          });
+        });
+        return response;
+      }
+      return fetch(event.request).catch(() =>
+        caches.match("./offline.html") // ou alguma página de fallback
+      );
     })
   );
 });
